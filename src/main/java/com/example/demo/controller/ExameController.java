@@ -19,10 +19,6 @@ public class ExameController {
 
 	@Autowired
 	private ExameRealizadoRepository exameRealizadoRepository;
-	String msg = "";
-
-	
-
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
@@ -45,6 +41,7 @@ public class ExameController {
 
 	@RequestMapping(value = "/cadastrarExame", method = RequestMethod.POST)
 	public String salvarAgendamento(ExameEntity exame) {
+		exame.setNome(exame.getNome().toUpperCase());
 		exameRepository.save(exame);
 		return "redirect:/consultaExames";
 	}
@@ -58,8 +55,9 @@ public class ExameController {
 	}
 
 	@RequestMapping(value = "/up/{id}", method = RequestMethod.POST)
-	public String upFunc(ExameEntity exame, @PathVariable("id") Integer id) {
+	public String upExame(ExameEntity exame, @PathVariable("id") Integer id) {
 		exame.setId(id);
+		exame.setNome(exame.getNome().toUpperCase());
 		exameRepository.save(exame);
 		return "redirect:/consultaExames";
 	}
@@ -79,7 +77,7 @@ public class ExameController {
 	public ModelAndView buscarPorNome(@RequestParam("nome") String nome) {
 		ModelAndView mv = new ModelAndView("consultaExames");
 		if(nome != "") {
-			mv.addObject("consultaExames", exameRepository.consultaPorNome("%"+nome+"%"));
+			mv.addObject("consultaExames", exameRepository.consultaPorNome("%"+nome.toUpperCase()+"%"));
 		}
 		else {
 			mv.addObject("consultaExames", exameRepository.findAll());

@@ -125,8 +125,7 @@ public class ExameRealizadoController {
 	public ModelAndView buscarPorNome(@RequestParam("nome") String nome) {
 		ModelAndView mv = new ModelAndView("consultaExameRealizados");
 		if(nome != "") {
-			mv.addObject("consultaExameRealizados", exameRealizadoRepository.consultaPorNomeExame("%"+nome+"%"));
-			System.out.println(exameRealizadoRepository.consultaPorNomeExame("%"+nome+"%"));
+			mv.addObject("consultaExameRealizados", exameRealizadoRepository.consultaPorNomeExame("%"+nome.toUpperCase()+"%"));
 		}
 		else {
 			mv.addObject("consultaExameRealizados", exameRealizadoRepository.findAll());
@@ -139,7 +138,7 @@ public class ExameRealizadoController {
 	public ModelAndView buscarPorNomeFuncionario(@RequestParam("nome") String nome) {
 		ModelAndView mv = new ModelAndView("consultaExameRealizados");
 		if(nome != "") {
-			mv.addObject("consultaExameRealizados", exameRealizadoRepository.consultaPorNomeFuncionario("%"+nome+"%"));
+			mv.addObject("consultaExameRealizados", exameRealizadoRepository.consultaPorNomeFuncionario("%"+nome.toUpperCase()+"%"));
 		}
 		else {
 			mv.addObject("consultaExameRealizados", exameRealizadoRepository.findAll());

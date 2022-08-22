@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entity.ExameRealizadoEntity;
@@ -39,8 +37,9 @@ public class FuncionarioController {
 	}
 
 	@RequestMapping(value = "/cadastrarFuncionario", method = RequestMethod.POST)
-	public String salvarFuncionario(FuncionarioEntity Funcionario) {
-		funcionarioRepository.save(Funcionario);
+	public String salvarFuncionario(FuncionarioEntity funcionario) {
+		funcionario.setNome(funcionario.getNome().toUpperCase());
+		funcionarioRepository.save(funcionario);
 		return "redirect:/consultaFuncionarios";
 	}
 
@@ -55,6 +54,7 @@ public class FuncionarioController {
 	@RequestMapping(value = "/upFunc/{id}", method = RequestMethod.POST)
 	public String upFunc(FuncionarioEntity funcionario, @PathVariable("id") Integer id) {
 		funcionario.setId(id);
+		funcionario.setNome(funcionario.getNome().toUpperCase());
 		funcionarioRepository.save(funcionario);
 		return "redirect:/consultaFuncionarios";
 	}
@@ -76,7 +76,7 @@ public class FuncionarioController {
 	public ModelAndView buscarPorNome(@RequestParam("nome") String nome) {
 		ModelAndView mv = new ModelAndView("consultaFuncionarios");
 		if(nome != "") {
-			mv.addObject("consultaFuncionarios", funcionarioRepository.consultaPorNome("%"+nome+"%"));
+			mv.addObject("consultaFuncionarios", funcionarioRepository.consultaPorNome("%"+nome.toUpperCase()+"%"));
 		}
 		else {
 			mv.addObject("consultaFuncionarios", funcionarioRepository.findAll());
