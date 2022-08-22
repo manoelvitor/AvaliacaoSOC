@@ -42,6 +42,33 @@ public interface ExameRealizadoRepository extends JpaRepository<ExameRealizadoEn
 	  "  ?1 AND ?2",
 	nativeQuery = true)
 	List<ExameRealizadoEntity> consultaRelatorio(String deDtExame, String ateDtExame);
-
+	
+	@Query(value = 
+	  "SELECT                            		" +
+	  "  *                                 	" +
+	  "FROM 								   	" +
+	  "  EXAME_REALIZADO 						" +
+	  "LEFT JOIN 								" +
+	  "  EXAME ON EXAME_EXAME_ID = EXAME_ID	" +
+	  "WHERE									" +
+	  " EXAME_NOME LIKE ?1 ;",	  	
+	nativeQuery = true)
+	List<ExameRealizadoEntity> consultaPorNomeExame(String nome);
+	
+	
+	
+	@Query(value = 
+	  "SELECT                            							" +
+	  "  *                                 							" +
+	  "FROM 								   						" +
+	  "  EXAME_REALIZADO 											" +
+	  "LEFT JOIN 													" +
+	  "  FUNCIONARIO ON FUNCIONARIO_ID = FUNCIONARIO_FUNCIONARIO_ID " +
+	  "WHERE														" +
+	  " FUNCIONARIO_NOME LIKE ?1 ;",	  	
+	nativeQuery = true)
+	List<ExameRealizadoEntity> consultaPorNomeFuncionario(String nome);
+	
+	
 	
 }

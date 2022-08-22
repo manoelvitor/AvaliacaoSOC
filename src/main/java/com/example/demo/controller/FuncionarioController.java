@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entity.ExameRealizadoEntity;
@@ -16,6 +18,7 @@ import com.example.demo.repository.FuncionarioRepository;
 
 @Controller
 public class FuncionarioController {
+	
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
 	@Autowired
@@ -68,5 +71,20 @@ public class FuncionarioController {
 		funcionarioRepository.deleteById(id);
 		return "redirect:/consultaFuncionarios";
 	}
+	
+	@RequestMapping(value = "/buscaPorNome", method = RequestMethod.POST)
+	public ModelAndView buscarPorNome(@RequestParam("nome") String nome) {
+		ModelAndView mv = new ModelAndView("consultaFuncionarios");
+		if(nome != "") {
+			mv.addObject("consultaFuncionarios", funcionarioRepository.consultaPorNome("%"+nome+"%"));
+		}
+		else {
+			mv.addObject("consultaFuncionarios", funcionarioRepository.findAll());
+		}
+		return mv;
+		
+	}
+
+	
 
 }

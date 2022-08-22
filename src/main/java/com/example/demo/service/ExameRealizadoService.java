@@ -1,36 +1,51 @@
 package com.example.demo.service;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.example.demo.entity.ExameRealizadoEntity;
+import com.example.demo.repository.ExameRealizadoRepository;
 
 @Service
 public class ExameRealizadoService {
 
-	protected void gerarRelatorio(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-	
-		Document documento = new Document();
-		try {
-			response.setContentType("apllication/pdf");
-			response.addHeader("Content-Disposition", "inline; filename=" + "contatos.pdf");
-			PdfWriter.getInstance(documento, response.getOutputStream());
-			documento.open();
-			documento.add(new Paragraph("Lista de contatos:"));
-			documento.add(new Paragraph(" "));
-			
-			documento.close();
-		} catch (Exception e) {
-			documento.close();
+	@Autowired
+	ExameRealizadoRepository repository;
+
+	public Boolean create(ExameRealizadoEntity obj) {
+		if (repository.verificaExameRealizado(obj.getDtExame(), obj.getExame().getId(), obj.getFuncionario().getId()) == null) {
+			repository.save(obj);
+			return true;
 		}
+		else {
+			return false;
+		}
+	}
+
+	public ExameRealizadoEntity findById(Integer id) {
+		Optional<ExameRealizadoEntity> exame = repository.findById(id);
+		return exame.orElse(null);
+	}
+
+	public List<ExameRealizadoEntity> findAll() {
+		return repository.findAll();
+	}
+
+	public boolean update(ExameRealizadoEntity obj) {
+		if (repository.existsById(obj.getId())) {
+			repository.save(obj);
+			return true;
+		}
+		return false;
+	}
+
+	public boolean delete(Integer id) {
+		if (repository.existsById(id)) {
+			repository.deleteById(id);
+		}
+		return false;
 	}
 	
 }

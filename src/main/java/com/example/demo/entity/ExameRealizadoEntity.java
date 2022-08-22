@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
@@ -35,10 +36,9 @@ public class ExameRealizadoEntity implements Serializable {
 	@NotNull
 	private ExameEntity exame;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	@Column(name = "EXAME_REALIZADO_DATA", nullable = false)
 	private String dtExame;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -70,7 +70,7 @@ public class ExameRealizadoEntity implements Serializable {
 	public void setDtExame(String dtExame) {
 		this.dtExame = dtExame;
 	}
-
+	
 	public ExameRealizadoEntity(FuncionarioEntity funcionario, ExameEntity exame, String dtExame) {
 		this.funcionario = funcionario;
 		this.exame = exame;

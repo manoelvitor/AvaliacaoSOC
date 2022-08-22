@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entity.ExameEntity;
@@ -72,6 +73,19 @@ public class ExameController {
 		}
 		mv.addObject("exames", exameRepository.findAll());
 		return mv;
+	}
+	
+	@RequestMapping(value = "/buscaPorNomeExame", method = RequestMethod.POST)
+	public ModelAndView buscarPorNome(@RequestParam("nome") String nome) {
+		ModelAndView mv = new ModelAndView("consultaExames");
+		if(nome != "") {
+			mv.addObject("consultaExames", exameRepository.consultaPorNome("%"+nome+"%"));
+		}
+		else {
+			mv.addObject("consultaExames", exameRepository.findAll());
+		}
+		return mv;
+		
 	}
 
 
