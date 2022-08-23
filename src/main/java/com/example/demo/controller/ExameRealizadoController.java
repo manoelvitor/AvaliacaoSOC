@@ -88,6 +88,7 @@ public class ExameRealizadoController {
 	protected ModelAndView gerarRelatorio(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("dtDe") String dtDe, @RequestParam("dtAte")String dtAte)
 			throws ServletException, IOException {
+		System.out.println(exameRealizadoRepository.consultaTop5(dtDe, dtAte)); 
 		ModelAndView mv = new ModelAndView("redirect:/consultaExameRealizados");
 		Document documento = new Document();
 		try {
@@ -106,7 +107,7 @@ public class ExameRealizadoController {
 			tabela.addCell(col2);
 			tabela.addCell(col3);
 			tabela.addCell(col4);
-			List<ExameRealizadoEntity> relatorio = dtAte != null || dtDe != null ? relatorio = exameRealizadoRepository.consultaRelatorio(dtDe, dtAte):exameRealizadoRepository.findAll();
+			List<ExameRealizadoEntity> relatorio = dtAte != null || dtDe != null || Integer.parseInt(dtAte) >  Integer.parseInt(dtDe)? relatorio = exameRealizadoRepository.consultaRelatorio(dtDe, dtAte):exameRealizadoRepository.findAll();
 			for (ExameRealizadoEntity ex : relatorio) {
 				tabela.addCell(ex.getId().toString());
 				tabela.addCell(ex.getExame().getNome());

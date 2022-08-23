@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -83,7 +86,25 @@ public class ExameController {
 			mv.addObject("consultaExames", exameRepository.findAll());
 		}
 		return mv;
-		
+	}
+
+	@RequestMapping(value = "/consultaTop5", method = RequestMethod.POST)
+	public ModelAndView consultaIndicadores(@RequestParam("dtDe") String dtDe, @RequestParam("dtAte") String dtAte) {
+		ModelAndView mv = new ModelAndView("consultaIndicadores");
+		List<ExameEntity> top5 = new ArrayList<>();
+		System.out.println();
+		for(Integer id : exameRealizadoRepository.consultaTop5(dtDe, dtAte)) {
+			System.out.println("id " + id);
+			top5.add(exameRepository.findById(id).get());
+		}
+		mv.addObject("consultaExames", top5);
+		System.out.println("exames " + top5);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/consultaIndicadores", method = RequestMethod.GET)
+	public String consultaIndicadores() {
+		return "/consultaIndicadores";
 	}
 
 

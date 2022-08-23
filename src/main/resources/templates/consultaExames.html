@@ -36,7 +36,6 @@ ul {
 
 	<nav class="navbar navbar-expand-lg navbar-light navbar-dark"
 		style="background-color: #4169E1">
-
 		<a class="navbar-brand" href="#"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
@@ -52,21 +51,21 @@ ul {
 					th:href="@{'/consultaExames'}"> <i
 						class="bi bi-file-earmark-medical"></i> EXAMES <span
 						class="sr-only">(current)</span></a></li>
-
 				<li class="nav-item active"><a class="nav-link"
 					th:href="@{'/consultaFuncionarios'}"> <i
 						class="bi bi-file-earmark-person"></i> FUNCIONÁRIOS <span
 						class="sr-only">(current)</span></a></li>
-
 				<li class="nav-item active"><a class="nav-link"
 					th:href="@{'/consultaExameRealizados'}"> <i
 						class="bi bi-calendar-check"></i> EXAMES REALIZADOS <span
 						class="sr-only">(current)</span></a></li>
-
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{'/consultaIndicadores'}"><i
+						class="bi bi-clipboard-data"></i> INDICADORES <span
+						class="sr-only">(current)</span></a></li>
 			</ul>
 		</div>
 	</nav>
-
 
 
 	<div
@@ -75,7 +74,7 @@ ul {
 
 		<form action="buscaPorNomeExame" method="POST"
 			style="padding: 45px; border-radius: 10px" class="border">
-			<h4>BUSCA POR NOME FUNCIONARIO:</h4>
+			<h4>BUSCA POR NOME EXAME:</h4>
 			<input type="search" class="form-control" name="nome"
 				style="width: 300px; display: inline; float: left; margin-right: 5px">
 			<button type="submit" class="btn btn-primary"

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -28,12 +29,11 @@ ul {
 	margin: auto;
 }
 </style>
-
-
-
-<title>CADASTRAR EXAME</title>
+<title>INDICADORES</title>
 </head>
+
 <body>
+
 	<nav class="navbar navbar-expand-lg navbar-light navbar-dark"
 		style="background-color: #4169E1">
 		<a class="navbar-brand" href="#"></a>
@@ -67,33 +67,46 @@ ul {
 		</div>
 	</nav>
 
+	<br>
 
 	<div
 		style="width: 50%; margin: auto; font-size: 13px; margin-top: 40px; margin-bottom: 100px; padding: 50px; border-radius: 10px"
 		class="border">
 
+		<form action="consultaTop5" method="POST"
+			style="padding: 10px; border-radius: 10px" class="border">
+			<h4>TOP 5 EXAMES REALIZADOS</h4>
+			<input type="date" name="dtDe" required class="form-control"
+				style="width: 150px; display: inline; float: left; margin-right: 5px">
+			<label style="display: inline; float: left; margin: 10px;">
+				ATÉ </label> <input type="date" name="dtAte" required class="form-control"
+				style="width: 150px; display: inline; float: left; margin-right: 5px">
 
+			<button type="submit" class="btn btn-primary">
+				<i class="bi bi-file-arrow-down-fill"
+					style="display: inline; float: inline"> </i> GERAR
+			</button>
 
-		<form method="POST" th:action="@{'/upFunc/'+ ${id}}"
-			style="width: 70%; margin: auto; margin-top: 80px; font-size: 22px;">
-			<div class="form-group">
-				<label>ID</label> <input name="id" th:field="${funcionario.id}"
-					disabled type="text" class="form-control" placeholder="ID">
-				<label>NOME</label> <input name="nome"
-					th:field="${funcionario.nome}" type="text" class="form-control"
-					placeholder="NOME">
-			</div>
-
-
-
-			<button type="submit" class="btn btn-primary">ATUALIZAR</button>
 		</form>
+		<br>
+		<table class="table table-hover">
+			<thead class="table-info" style="font-size: 18px">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">NOME</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="exame: ${consultaExames}">
+					<td th:text="${exame.id}"></td>
+					<td th:text="${exame.nome}"></td>
 
 
-
-
-
+				</tr>
+			</tbody>
+		</table>
 	</div>
+
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -113,4 +126,5 @@ ul {
 
 </body>
 </body>
+
 </html>

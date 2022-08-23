@@ -71,4 +71,20 @@ public interface ExameRealizadoRepository extends JpaRepository<ExameRealizadoEn
 	
 	
 	
+	@Query(value = 
+	  "SELECT 											" +
+	  "  EXAME_EXAME_ID 								" +
+	  "FROM 											" +
+	  "  EXAME_REALIZADO								" +
+	  "WHERE 											" +
+	  "  EXAME_REALIZADO_DATA							" +
+	  "BETWEEN ?1 AND ?2 								" +
+	  "GROUP BY EXAME_EXAME_ID 							" +
+	  "HAVING COUNT(EXAME_EXAME_ID) > 1 				" +
+	  "ORDER BY count(EXAME_EXAME_ID) DESC LIMIT 5;		",   	
+	nativeQuery = true)
+	List<Integer> consultaTop5(String dtDe, String dtAte);
+	
+	
+	
 }

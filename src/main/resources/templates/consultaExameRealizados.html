@@ -7,7 +7,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -15,96 +16,107 @@
 	crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/4aac1b864c.js"
 	crossorigin="anonymous"></script>
-	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-	
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 
 <style type="text/css">
-
-li{
-	font-size:25px;
+li {
+	font-size: 25px;
 	padding: 10px;
 	font-weight: bold;
-	
-}
-ul{
-	margin:auto;
 }
 
-
+ul {
+	margin: auto;
+}
 </style>
 
 
 
 <title>ExameRealizadoss</title>
 </head>
-<body >
+<body>
 
 
+	<nav class="navbar navbar-expand-lg navbar-light navbar-dark"
+		style="background-color: #4169E1">
+		<a class="navbar-brand" href="#"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{'/'}"> <i class="bi bi-house"></i> INICIO <span
+						class="sr-only">(current)</span></a></li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{'/consultaExames'}"> <i
+						class="bi bi-file-earmark-medical"></i> EXAMES <span
+						class="sr-only">(current)</span></a></li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{'/consultaFuncionarios'}"> <i
+						class="bi bi-file-earmark-person"></i> FUNCIONÁRIOS <span
+						class="sr-only">(current)</span></a></li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{'/consultaExameRealizados'}"> <i
+						class="bi bi-calendar-check"></i> EXAMES REALIZADOS <span
+						class="sr-only">(current)</span></a></li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{'/consultaIndicadores'}"><i
+						class="bi bi-clipboard-data"></i> INDICADORES <span
+						class="sr-only">(current)</span></a></li>
+			</ul>
+		</div>
+	</nav>
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-dark" style="background-color: #4169E1">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{'/'}"> <i class="bi bi-house"></i> INICIO <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{'/consultaExames'}"> <i class="bi bi-file-earmark-medical"></i> EXAMES <span class="sr-only">(current)</span></a>
-      </li>
-      
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{'/consultaFuncionarios'}"> <i class="bi bi-file-earmark-person"></i> FUNCIONÁRIOS <span class="sr-only">(current)</span></a>
-      </li>	
-      
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{'/consultaExameRealizados'}"> <i class="bi bi-calendar-check"></i> EXAMES REALIZADOS <span class="sr-only">(current)</span></a>
-      </li>
-
-    </ul>
-  </div>
-</nav>
-
-
-
-
-
-	<div style="width: 50%; margin: auto; font-size: 13px; margin-top: 40px; margin-bottom:100px ;padding:50px; border-radius: 10px" class="border" >
-		<h2>EXAMES REALIZADOS</h2> <br>
-		<form action="gerarRelatorio" method="POST" style="padding:10px; border-radius: 10px" class="border" >
+	<div
+		style="width: 50%; margin: auto; font-size: 13px; margin-top: 40px; margin-bottom: 100px; padding: 50px; border-radius: 10px"
+		class="border">
+		<h2>EXAMES REALIZADOS</h2>
+		<br>
+		<form action="gerarRelatorio" method="POST"
+			style="padding: 10px; border-radius: 10px" class="border">
 			<h4>GERAR RELATÓRIO</h4>
-			<input type="date" name="dtDe" required class="form-control" style = "width: 150px; display: inline; float: left; margin-right: 5px" > 
-			<label style="display: inline; float: left;margin:10px;"> ATÉ </label>
-			<input type="date" name="dtAte" required class="form-control" style = "width: 150px;display: inline;float: left; margin-right: 5px" >
-			
-			<button type="submit"  class="btn btn-primary"> <i class="bi bi-file-arrow-down-fill" style = "display:inline;float:inline"> 	</i> GERAR</button>
-			
+			<input type="date" name="dtDe" id="dtDe" required
+				class="form-control"
+				style="width: 150px; display: inline; float: left; margin-right: 5px">
+			<label style="display: inline; float: left; margin: 10px;">
+				ATÉ </label> <input type="date" name="dtAte" id="dtAte" required
+				class="form-control"
+				style="width: 150px; display: inline; float: left; margin-right: 5px">
+
+			<button type="submit" class="btn btn-primary">
+				<i class="bi bi-file-arrow-down-fill"
+					style="display: inline; float: inline"> </i> GERAR
+			</button>
+
 		</form>
 		<br>
 
-		
-				<form action="buscaPorNomeExameRealizado" method="POST"
+
+		<form action="buscaPorNomeExameRealizado" method="POST"
 			style="padding: 45px; border-radius: 10px" class="border">
 			<h4>BUSCA POR EXAME:</h4>
 			<input type="search" class="form-control" name="nome"
 				style="width: 300px; display: inline; float: left; margin-right: 5px">
-			<button type="submit" class="btn btn-primary"
-				style="display: inline; float: left">
+			<button onclick="verificaDtMaior()" type="submit"
+				class="btn btn-primary" style="display: inline; float: left">
 				<i class="bi bi-search"> </i> BUSCAR
 			</button>
 
 		</form>
-		
-		
+
+
 		<br>
-	
-		
-		
-		
-						<form action="buscaPorFuncionarioExameRealizado" method="POST"
+
+
+
+
+		<form action="buscaPorFuncionarioExameRealizado" method="POST"
 			style="padding: 45px; border-radius: 10px" class="border">
 			<h4>BUSCA POR FUNCIONÁRIO:</h4>
 			<input type="search" class="form-control" name="nome"
@@ -115,18 +127,17 @@ ul{
 			</button>
 
 		</form>
-		<br>
-
-		<a th:href="@{'/novoExameRealizado'}" class="btn btn-primary"
-			style="color: white; font-size: 15px; margin-bottom: 5px">CADASTRAR</a> 
+		<br> <a th:href="@{'/novoExameRealizado'}"
+			class="btn btn-primary"
+			style="color: white; font-size: 15px; margin-bottom: 5px">CADASTRAR</a>
 
 		<table class="table table-hover">
-			<thead class="table-info" style = "font-size: 18px">
+			<thead class="table-info" style="font-size: 18px">
 				<tr>
 					<th scope="col">ID</th>
 					<th scope="col">EXAME</th>
 					<th scope="col">FUNCIONARIO</th>
-					<th scope="col" >DATA</th>
+					<th scope="col">DATA</th>
 					<th scope="col">AÇÕES</th>
 				</tr>
 			</thead>
@@ -138,8 +149,8 @@ ul{
 					<td th:text="${exameRealizados.dtExame}" class="dt"></td>
 
 
-					<td>
-						 <a th:href="@{'/atualizarExRealizado/' + ${exameRealizados.id}}">
+					<td><a
+						th:href="@{'/atualizarExRealizado/' + ${exameRealizados.id}}">
 							<button type="button" class="btn btn-warning"
 								style="margin: 10px">
 								<i class="fas fa-edit"> </i>
@@ -174,15 +185,12 @@ ul{
 									</div>
 								</div>
 							</div>
-						</div>
-					</td>
-
-
+						</div></td>
 			</tbody>
 		</table>
 	</div>
 
-</div>
+	</div>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -197,25 +205,21 @@ ul{
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-		
-	
-		
-		
-
 	<script>
-	formataDt();
 	
-	function formataDt(){
-		var items = document.getElementsByClassName('dt');
-		for (var i = 0; i <= items.length; i++) {
-			var data = items[i].textContent
-			var ano = data.substring(0,4);
-			var mes = data.substring(5,7);
-			var dia = data.substring(8,10)
-	    	items[i].textContent = dia + "/" + mes + "/"+ ano
-	}
-}
+		formataDt();
 
+		function formataDt() {
+			var items = document.getElementsByClassName('dt');
+			for (var i = 0; i <= items.length; i++) {
+				var data = items[i].textContent
+				var ano = data.substring(0, 4);
+				var mes = data.substring(5, 7);
+				var dia = data.substring(8, 10)
+				items[i].textContent = dia + "/" + mes + "/" + ano
+			}
+		}
+		
 	</script>
 
 </body>

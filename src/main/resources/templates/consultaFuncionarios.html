@@ -34,7 +34,6 @@ ul {
 </head>
 <body>
 
-
 	<nav class="navbar navbar-expand-lg navbar-light navbar-dark"
 		style="background-color: #4169E1">
 		<a class="navbar-brand" href="#"></a>
@@ -52,27 +51,29 @@ ul {
 					th:href="@{'/consultaExames'}"> <i
 						class="bi bi-file-earmark-medical"></i> EXAMES <span
 						class="sr-only">(current)</span></a></li>
-
 				<li class="nav-item active"><a class="nav-link"
 					th:href="@{'/consultaFuncionarios'}"> <i
 						class="bi bi-file-earmark-person"></i> FUNCIONÁRIOS <span
 						class="sr-only">(current)</span></a></li>
-
 				<li class="nav-item active"><a class="nav-link"
 					th:href="@{'/consultaExameRealizados'}"> <i
 						class="bi bi-calendar-check"></i> EXAMES REALIZADOS <span
 						class="sr-only">(current)</span></a></li>
-
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{'/consultaIndicadores'}"><i
+						class="bi bi-clipboard-data"></i> INDICADORES <span
+						class="sr-only">(current)</span></a></li>
 			</ul>
 		</div>
 	</nav>
 
 
+	<div
+		style="width: 50%; margin: auto; font-size: 13px; margin-top: 40px; margin-bottom: 100px; padding: 50px; border-radius: 10px"
+		class="border">
 
-	<div style="width: 50%; margin: auto; font-size: 13px; margin-top: 40px; margin-bottom:100px ;padding:50px; border-radius: 10px" class="border" >
-
-			<h3>FUNCIONARIOS:</h3>
-	<br>
+		<h3>FUNCIONARIOS:</h3>
+		<br>
 
 		<form action="buscaPorNome" method="POST"
 			style="padding: 45px; border-radius: 10px" class="border">
@@ -93,7 +94,7 @@ ul {
 			style="color: white; font-size: 15px; margin-bottom: 5px">CADASTRAR</a>
 
 		<table class="table table-hover">
-			<thead class="table-info" style = "font-size: 18px">
+			<thead class="table-info" style="font-size: 18px">
 				<tr>
 					<th scope="col">ID</th>
 					<th scope="col">NOME</th>
@@ -104,8 +105,7 @@ ul {
 				<tr th:each="funcionario: ${consultaFuncionarios}">
 					<td th:text="${funcionario.id}"></td>
 					<td th:text="${funcionario.nome}"></td>
-					<td>
-					 <a th:href="@{'/atualizarFunc/' + ${funcionario.id}}">
+					<td><a th:href="@{'/atualizarFunc/' + ${funcionario.id}}">
 							<button type="button" class="btn btn-warning"
 								style="margin: 10px">
 								<i class="fas fa-edit"> </i>
@@ -140,8 +140,7 @@ ul {
 									</div>
 								</div>
 							</div>
-						</div>
-					</td>
+						</div></td>
 
 
 

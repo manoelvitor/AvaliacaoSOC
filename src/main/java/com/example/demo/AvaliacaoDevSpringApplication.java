@@ -126,14 +126,58 @@ public class AvaliacaoDevSpringApplication implements CommandLineRunner {
 		ExameRealizadoEntity ex31 = new ExameRealizadoEntity(func8, exame18, "2020-01-27");
 		ExameRealizadoEntity ex32 = new ExameRealizadoEntity(func9, exame19, "2022-02-26");
 		ExameRealizadoEntity ex33 = new ExameRealizadoEntity(func10, exame1, "2022-03-25");
-		ExameRealizadoEntity ex34 = new ExameRealizadoEntity(func11, exame2, "2022-04-24");
-		ExameRealizadoEntity ex35 = new ExameRealizadoEntity(func12, exame3, "2022-05-23");
-		ExameRealizadoEntity ex36 = new ExameRealizadoEntity(func13, exame4, "2022-06-22");
-		ExameRealizadoEntity ex37 = new ExameRealizadoEntity(func14, exame5, "2022-01-21");
+		ExameRealizadoEntity ex34 = new ExameRealizadoEntity(func11, exame1, "2022-04-24");
+		ExameRealizadoEntity ex35 = new ExameRealizadoEntity(func12, exame1, "2022-05-23");
+		ExameRealizadoEntity ex36 = new ExameRealizadoEntity(func13, exame1, "2022-06-22");
+		ExameRealizadoEntity ex37 = new ExameRealizadoEntity(func14, exame1, "2022-01-10");
+		ExameRealizadoEntity ex38 = new ExameRealizadoEntity(func15, exame1, "2015-02-29");
+		ExameRealizadoEntity ex39 = new ExameRealizadoEntity(func16, exame1, "2016-03-28");
+		ExameRealizadoEntity ex40 = new ExameRealizadoEntity(func17, exame2, "2017-04-27");
+		ExameRealizadoEntity ex41 = new ExameRealizadoEntity(func18, exame2, "2018-05-26");
+		ExameRealizadoEntity ex42 = new ExameRealizadoEntity(func19, exame2, "2019-06-25");
+		ExameRealizadoEntity ex43 = new ExameRealizadoEntity(func20, exame2, "2020-07-24");
+		ExameRealizadoEntity ex44 = new ExameRealizadoEntity(func21, exame2, "2022-08-23");
+		ExameRealizadoEntity ex45 = new ExameRealizadoEntity(func22, exame3, "2022-09-02");
+		ExameRealizadoEntity ex46 = new ExameRealizadoEntity(func23, exame3, "2010-01-01");
+		ExameRealizadoEntity ex47 = new ExameRealizadoEntity(func1, exame3, "2011-01-11");
+		ExameRealizadoEntity ex48 = new ExameRealizadoEntity(func2, exame3, "2012-10-28");
+		ExameRealizadoEntity ex49 = new ExameRealizadoEntity(func3, exame4, "2013-09-28");
+		ExameRealizadoEntity ex50 = new ExameRealizadoEntity(func4, exame4, "2014-08-29");
+		ExameRealizadoEntity ex51 = new ExameRealizadoEntity(func5, exame4, "2015-07-28");
+		ExameRealizadoEntity ex52 = new ExameRealizadoEntity(func6, exame4, "2016-06-27");
+		ExameRealizadoEntity ex53 = new ExameRealizadoEntity(func7, exame6, "2017-05-26");
+		ExameRealizadoEntity ex54 = new ExameRealizadoEntity(func8, exame6, "2018-04-25");
+		ExameRealizadoEntity ex55 = new ExameRealizadoEntity(func9, exame6, "2019-03-24");
+		ExameRealizadoEntity ex56 = new ExameRealizadoEntity(func10, exame5, "2020-02-23");
+		ExameRealizadoEntity ex57 = new ExameRealizadoEntity(func11, exame5, "2021-01-22");
+
 
 		exameRealizadoRepository.saveAll(Arrays.asList(ex1, ex2, ex3, ex4, ex5, ex6, ex7, ex8, ex9, ex10, ex11, ex12,
 				ex13, ex14, ex15, ex16, ex17, ex18, ex19, ex20, ex21, ex22, ex23, ex24, ex25, ex26, ex27, ex28, ex29,
-				ex30, ex31, ex32, ex33, ex34, ex35, ex36, ex37
+				ex30, ex31, ex32, ex33, ex34, ex35, ex36, 
+				ex37,
+				ex38,
+				ex39,
+				ex40,
+				ex41,
+				ex42,
+				ex43,
+				ex44,
+				ex45,
+				ex46,
+				ex47,
+				ex48,
+				ex49,
+				ex50,
+				ex51,
+				ex52,
+				ex53,
+				ex54,
+				ex55,
+				ex56,
+				ex57
+
+				
 		));
 
 	}
