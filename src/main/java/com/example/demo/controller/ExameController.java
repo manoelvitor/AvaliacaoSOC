@@ -104,7 +104,7 @@ public class ExameController {
 	
 	@RequestMapping(value = "/consultaIndicadores", method = RequestMethod.GET)
 	public String consultaIndicadores() {
-		return "/consultaIndicadores";
+		return "consultaIndicadores";
 	}
 
 
