@@ -23,7 +23,7 @@ public class ExameController {
 	@Autowired
 	private ExameRealizadoRepository exameRealizadoRepository;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
 		return "index";
 	}

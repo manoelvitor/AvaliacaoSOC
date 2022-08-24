@@ -18,39 +18,39 @@ public interface ExameRealizadoRepository extends JpaRepository<ExameRealizadoEn
 	List<ExameRealizadoEntity> findByExame(ExameEntity exame);
 
 	@Query(value = 
-	  "SELECT							" +
-	  "  *   							" +
-	  "FROM								" +
- 	  "  EXAME_REALIZADO				" +
-	  "WHERE 							" +
-	  "  EXAME_REALIZADO_DATA = ?1 		" +
-      "AND 								" +
-	  "  EXAME_EXAME_ID = ?2 			" +
-	  "AND 								" +
+	  "SELECT                           " +
+	  "  *                              " +
+	  "FROM                             " +
+ 	  "  EXAME_REALIZADO                " +
+	  "WHERE                            " +
+	  "  EXAME_REALIZADO_DATA = ?1      " +
+      "AND                              " +
+	  "  EXAME_EXAME_ID = ?2            " +
+	  "AND                              " +
 	  "  FUNCIONARIO_FUNCIONARIO_ID = ?3 ;",
 	nativeQuery = true)
 	ExameRealizadoEntity verificaExameRealizado(String dtExame, Integer idExame, Integer idFuncionario);
 
 	@Query(value = 
-	  "SELECT							" +
-	  "  *   							" +
-	  "FROM								" +
- 	  "  EXAME_REALIZADO				" +
-	  "WHERE 							" +
-	  "  EXAME_REALIZADO_DATA  		    " +
-      "BETWEEN  						" +
+	  "SELECT                           " +
+	  "  *                              " +
+	  "FROM                             " +
+ 	  "  EXAME_REALIZADO                " +
+	  "WHERE                            " +
+	  "  EXAME_REALIZADO_DATA           " +
+      "BETWEEN                          " +
 	  "  ?1 AND ?2",
 	nativeQuery = true)
 	List<ExameRealizadoEntity> consultaRelatorio(String deDtExame, String ateDtExame);
 	
 	@Query(value = 
-	  "SELECT                            		" +
-	  "  *                                 	" +
-	  "FROM 								   	" +
-	  "  EXAME_REALIZADO 						" +
-	  "LEFT JOIN 								" +
-	  "  EXAME ON EXAME_EXAME_ID = EXAME_ID	" +
-	  "WHERE									" +
+	  "SELECT                                   " +
+	  "  *                                      " +
+	  "FROM                                     " +
+	  "  EXAME_REALIZADO                        " +
+	  "LEFT JOIN                                " +
+	  "  EXAME ON EXAME_EXAME_ID = EXAME_ID     " +
+	  "WHERE                                    " +
 	  " EXAME_NOME LIKE ?1 ;",	  	
 	nativeQuery = true)
 	List<ExameRealizadoEntity> consultaPorNomeExame(String nome);
@@ -58,13 +58,13 @@ public interface ExameRealizadoRepository extends JpaRepository<ExameRealizadoEn
 	
 	
 	@Query(value = 
-	  "SELECT                            							" +
-	  "  *                                 							" +
-	  "FROM 								   						" +
-	  "  EXAME_REALIZADO 											" +
-	  "LEFT JOIN 													" +
+	  "SELECT                                                       " +
+	  "  *                                                          " +
+	  "FROM                                                         " +
+	  "  EXAME_REALIZADO                                            " +
+	  "LEFT JOIN                                                    " +
 	  "  FUNCIONARIO ON FUNCIONARIO_ID = FUNCIONARIO_FUNCIONARIO_ID " +
-	  "WHERE														" +
+	  "WHERE                                                        " +
 	  " FUNCIONARIO_NOME LIKE ?1 ;",	  	
 	nativeQuery = true)
 	List<ExameRealizadoEntity> consultaPorNomeFuncionario(String nome);
@@ -72,16 +72,16 @@ public interface ExameRealizadoRepository extends JpaRepository<ExameRealizadoEn
 	
 	
 	@Query(value = 
-	  "SELECT 											" +
-	  "  EXAME_EXAME_ID 								" +
-	  "FROM 											" +
-	  "  EXAME_REALIZADO								" +
-	  "WHERE 											" +
-	  "  EXAME_REALIZADO_DATA							" +
-	  "BETWEEN ?1 AND ?2 								" +
-	  "GROUP BY EXAME_EXAME_ID 							" +
-	  "HAVING COUNT(EXAME_EXAME_ID) > 1 				" +
-	  "ORDER BY count(EXAME_EXAME_ID) DESC LIMIT 5;		",   	
+	  "SELECT                                           " +
+	  "  EXAME_EXAME_ID                                 " +
+	  "FROM                                             " +
+	  "  EXAME_REALIZADO                                " +
+	  "WHERE                                            " +
+	  "  EXAME_REALIZADO_DATA                           " +
+	  "BETWEEN ?1 AND ?2                                " +
+	  "GROUP BY EXAME_EXAME_ID                          " +
+	  "HAVING COUNT(EXAME_EXAME_ID) > 1                 " +
+	  "ORDER BY count(EXAME_EXAME_ID) DESC LIMIT 5;     ",   	
 	nativeQuery = true)
 	List<Integer> consultaTop5(String dtDe, String dtAte);
 	

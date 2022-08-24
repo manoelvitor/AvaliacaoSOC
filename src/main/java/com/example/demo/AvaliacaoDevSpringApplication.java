@@ -1,19 +1,23 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.demo.entity.ExameEntity;
 import com.example.demo.entity.ExameRealizadoEntity;
 import com.example.demo.entity.FuncionarioEntity;
+import com.example.demo.entity.UsuarioEntity;
 import com.example.demo.repository.ExameRealizadoRepository;
 import com.example.demo.repository.ExameRepository;
 import com.example.demo.repository.FuncionarioRepository;
+import com.example.demo.repository.UsuarioRepository;
 
 @SpringBootApplication
 public class AvaliacaoDevSpringApplication implements CommandLineRunner {
@@ -26,13 +30,31 @@ public class AvaliacaoDevSpringApplication implements CommandLineRunner {
 
 	@Autowired
 	private ExameRealizadoRepository exameRealizadoRepository;
-
+	
+	@Autowired
+	UsuarioRepository usuarioRepository;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(AvaliacaoDevSpringApplication.class, args);
+		System.out.println( new BCryptPasswordEncoder().encode("123"));
+	
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+
+		
+		UsuarioEntity usuarioPadrao = new UsuarioEntity();
+		usuarioPadrao.setLogin("manoel");
+		usuarioPadrao.setNomeCompleto("Manoel Vitor da Silva");
+		usuarioPadrao.setSenha(new BCryptPasswordEncoder().encode("123"));
+	
+
+
+		
+		usuarioRepository.save(usuarioPadrao);
+		
 		ExameEntity exame1 = new ExameEntity("HEMOGRAMA");
 		ExameEntity exame2 = new ExameEntity("URINA");
 		ExameEntity exame3 = new ExameEntity("HCG");

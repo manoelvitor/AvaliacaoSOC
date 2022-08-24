@@ -12,14 +12,14 @@ import com.example.demo.entity.FuncionarioEntity;
 public interface FuncionarioRepository extends JpaRepository<FuncionarioEntity, Integer> {
 
 	@Query(value = 
-	  "SELECT							" +
-	  "  *   							" +
-	  "FROM								" +
- 	  "  FUNCIONARIO     				" +
-	  "WHERE 							" +
-	  "  FUNCIONARIO_NOME            	" +
-	  "LIKE								" +
-	  "   ?1     " ,
+	  "SELECT                           " +
+	  "  *                              " +
+	  "FROM                             " +
+ 	  "  FUNCIONARIO                    " +
+	  "WHERE                            " +
+	  "  FUNCIONARIO_NOME               " +
+	  "LIKE                             " +
+	  "   ?1   " ,
 	  nativeQuery = true)
 	List<FuncionarioEntity> consultaPorNome(String nome);
 

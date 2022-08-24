@@ -46,7 +46,7 @@ ul {
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
 				<li class="nav-item active"><a class="nav-link"
-					th:href="@{'/'}"> <i class="bi bi-house"></i> INICIO <span
+					th:href="@{'/index'}"> <i class="bi bi-house"></i> INICIO <span
 						class="sr-only">(current)</span></a></li>
 				<li class="nav-item active"><a class="nav-link"
 					th:href="@{'/consultaExames'}"> <i
@@ -64,13 +64,20 @@ ul {
 					th:href="@{'/consultaIndicadores'}"><i
 						class="bi bi-clipboard-data"></i> INDICADORES <span
 						class="sr-only">(current)</span></a></li>
+				<li class="nav-item active" style="padding: 0">
+					<form action="logout" method="post">
+						<button type="submit" class="btn btn-warning"
+							style="font-size: 15px; font-weight: bold; margin-left: 150px; float: right;">
+							<i class="bi bi-box-arrow-left"></i> SAIR
+						</button>
+					</form>
+				</li>
 			</ul>
 		</div>
 	</nav>
 
 	<div
 		style="width: 50%; margin: auto; font-size: 13px; margin-top: 80px;">
-
 
 		<form method="POST" th:action="@{/cadastrarExameRealizado}" action="#"
 			style="width: 70%; margin: auto; margin-top: 80px; font-size: 22px;">
@@ -92,11 +99,6 @@ ul {
 				style="width: 350px" name="dtExame"> <br> <br>
 			<button type="submit" class="btn btn-primary">CADASTRAR</button>
 		</form>
-
-
-
-
-
 	</div>
 
 	<!-- Optional JavaScript -->

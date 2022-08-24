@@ -12,14 +12,14 @@ import com.example.demo.entity.ExameEntity;
 public interface ExameRepository extends JpaRepository<ExameEntity, Integer> {
 
 	@Query(value = 
-	  "SELECT							" +
-	  "  *   							" +
-	  "FROM								" +
-	  "  EXAME           				" +
-	  "WHERE 							" +
-	  "  EXAME_NOME            			" +
-	  "LIKE								" +
-	  "   ?1     						" ,
+	  "SELECT                           " +
+	  "  *                              " +
+	  "FROM                             " +
+	  "  EXAME                          " +
+	  "WHERE                            " +
+	  "  EXAME_NOME                     " +
+	  "LIKE                             " +
+	  "   ?1                            " ,
 	nativeQuery = true)
 	List<ExameEntity> consultaPorNome(String nome);
 	
